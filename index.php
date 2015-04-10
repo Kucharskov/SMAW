@@ -1,4 +1,5 @@
 <?php
+ob_start();
 /***************************************************************************
  *
  *	SMAW v1.1 beta (So Minimize thAt Width)
@@ -171,3 +172,4 @@ $(document).foundation();
 
 </body>
 </html>
+<?php ob_end_flush(); ?>
