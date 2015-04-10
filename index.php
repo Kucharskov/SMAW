@@ -1,7 +1,7 @@
 <?php
 /***************************************************************************
  *
- *	SMAW v1.0 (So Minimize thAt Width)
+ *	SMAW v1.1 beta (So Minimize thAt Width)
  *	with love by M. Kucharskov & P. Kowalczyk (http://kucharskov.pl)
  *
  *	This is free software and it's distributed under Creative Commons BY-NC-SA License.
@@ -128,10 +128,12 @@ function ShowText($string) {
 								$SMAW_ID = count($SMAW_Urls)+1;
 							}
 							
-							$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
-							$SMAW_FName = $SMAW_FName[(count($SMAW_FName) - 1)];
-							$SMAW_Dir = str_replace($SMAW_FName, "", $_SERVER["PHP_SELF"]);
-							$SMAW_Url = ($SMAW_CONFIG["RewriteMod"] === 1) ? "http://{$_SERVER["HTTP_HOST"]}{$SMAW_Dir}{$SMAW_ID}" : "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
+							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
+							if($SMAW_CONFIG["RewriteMod"] === 1) {
+								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
+								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
+								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
+							}
 							$SMAW_OU = "<li class='price success'>".ShowText("ShortenURL")."<a href='{$SMAW_Url}'>{$SMAW_Url}</a></li>";
 						} else {
 							$SMAW_OU = "<li class='price alert'>".ShowText("BadURL")."</li>";
