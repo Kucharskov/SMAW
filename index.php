@@ -20,7 +20,6 @@ $SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";
 $SMAW_CONFIG["Language"]	= "en";
 $SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";
 $SMAW_CONFIG["RewriteMod"]	= 0;
-$SMAW_CONFIG["RegEx"] = "^(https?|ftp)\:\/\/([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)*(\:[0-9]{2,5})?(\/([a-z0-9+\$_-]\.?)+)*\/?(\?[a-z+&\$_.-][a-z0-9;:@/&%=+\$_.-]*)?(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
 
 //Translations of SMAW
 //English by P. Kowalczyk
@@ -116,8 +115,8 @@ function ShowText($string) {
 						header("Refresh: 2; url={$SMAW_Url}");
 					}
 				} else {
-					if(isset($_POST["url"])) {	
-						if(eregi($SMAW_CONFIG["RegEx"], $_POST["url"])) {
+					if(isset($_POST["url"])) {
+						if(filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 							$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
 							foreach($SMAW_Urls as $SMAW_Row)
 							{
