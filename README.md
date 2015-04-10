@@ -3,7 +3,7 @@
 Skrypt w języku PHP skracający linki do użyteczniejszej formy. Główne funkcje i zalety:
   - Przyjemna konfiguracja na początku pliku
   - Mozliwość włączenia/wyłączenia generowania linków z mod_rewrite
-  - Możliwość przestawienia języka (polski / angielsk)i, możliwość dodania włąsnego
+  - Możliwość przestawienia języka (polski / angielski), możliwość dodania włąsnego
   - Korzysta z frameworka Zurb Foundation
   - Wszystko w JEDNYM pliku
 
