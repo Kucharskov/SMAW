@@ -56,7 +56,7 @@ function ShowText($string) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $SMAW_CONFIG["Language"]; ?>">
 <head>
 	<title><?php echo $SMAW_CONFIG["SiteName"]; ?></title>
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
