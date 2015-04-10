@@ -18,7 +18,7 @@
 $SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";
 $SMAW_CONFIG["Language"]	= "en";
 $SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";
-$SMAW_CONFIG["RewriteMod"]	= 1;
+$SMAW_CONFIG["RewriteMod"]	= 0;
 $SMAW_CONFIG["RegEx"] = "^(https?|ftp)\:\/\/([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)*(\:[0-9]{2,5})?(\/([a-z0-9+\$_-]\.?)+)*\/?(\?[a-z+&\$_.-][a-z0-9;:@/&%=+\$_.-]*)?(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
 
 //Translations of SMAW
