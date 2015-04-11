@@ -27,6 +27,7 @@ Lista zmian
   
 ######Wersja 1.0
   - Początkowa wersja
+
 ---
 
 [EN] So Minimize thAt Width [SMAW](http://r.kucharskov.pl)
