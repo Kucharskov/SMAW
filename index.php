@@ -54,6 +54,15 @@ function ShowText($string) {
 	else return $SMAW_TRANS[$SMAW_CONFIG["Language"]][$string];
 }
 
+// Function to getting page title
+function get_page_title($url){
+	if(!($data = file_get_contents($url))) return false;
+	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) {
+		return trim($title[1]);
+	} else {
+		return false;
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $SMAW_CONFIG["Language"]; ?>">
@@ -110,6 +119,7 @@ function ShowText($string) {
 						header("Refresh: 2; url={$_SERVER['PHP_SELF']}");
 					} else {
 			?>
+			<li class="bullet-item"><?php echo get_page_title($SMAW_Url); ?></li>
 			<li class="bullet-item"><?php echo ShowText("LoadingURL"); ?></li>
 			<?php
 						header("Refresh: 2; url={$SMAW_Url}");
