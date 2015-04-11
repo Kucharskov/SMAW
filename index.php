@@ -113,15 +113,11 @@ function get_page_title($url){
 					$SMAW_Url = $SMAW_Urls[$_GET["id"]-1];
 					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
 					if(!$SMAW_Url) {
-			?>
-			<li class="bullet-item alert"><?php echo ShowText("DeletedURL"); ?></li>
-			<?php
+						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>";
 						header("Refresh: 2; url={$_SERVER['PHP_SELF']}");
 					} else {
-			?>
-			<li class="bullet-item"><?php echo get_page_title($SMAW_Url); ?></li>
-			<li class="bullet-item"><?php echo ShowText("LoadingURL"); ?></li>
-			<?php
+						echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>";
+						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>";
 						header("Refresh: 2; url={$SMAW_Url}");
 					}
 				} else {
@@ -137,7 +133,6 @@ function get_page_title($url){
 								file_put_contents($SMAW_CONFIG["BaseFile"], "{$_POST["url"]}\r\n", FILE_APPEND);
 								$SMAW_ID = count($SMAW_Urls)+1;
 							}
-							
 							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
 								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
@@ -151,7 +146,6 @@ function get_page_title($url){
 					} else {
 						$SMAW_OU = "<li class='price'>".ShowText("SMAWinfo")."</li>";
 					}
-					
 					echo $SMAW_OU;
 			?>
 				<form action="index.php" method="post">
