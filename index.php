@@ -94,6 +94,7 @@ function get_page_title($url){
 	.pricing-table .success { background-color: #43ac6a; border-color: #368a55; color: #fff; }
 	.pricing-table .alert { background-color: #f04124; border-color: #cf2a0e; color: #fff; }
 	.pricing-table button { margin-bottom: 0.9375rem; color: #fff; }
+	.pricing-table.lastshorts { margin-top: 1rem; }
 	-->
 	</style>
 	
@@ -169,7 +170,7 @@ function get_page_title($url){
 		<?php
 			if($SMAW_CONFIG["ShowLast"] > 0) {
 		?>
-		<ul class="pricing-table">
+		<ul class="pricing-table lastshorts">
 			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
 			<?php				
 				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_LastUrls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
