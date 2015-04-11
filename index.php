@@ -116,7 +116,7 @@ function get_page_title($url){
 						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>";
 						header("Refresh: 2; url={$_SERVER['PHP_SELF']}");
 					} else {
-						echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>";
+						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>";
 						header("Refresh: 2; url={$SMAW_Url}");
 					}
