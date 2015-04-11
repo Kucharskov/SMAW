@@ -96,6 +96,7 @@ function get_page_title($url){
 	.pricing-table button { margin-bottom: 0.9375rem; color: #fff; }
 	.pricing-table.lastshorts { margin-top: 1rem; }
 	.overflowfix { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.clearfix { margin-bottom: 3rem; }
 	-->
 	</style>
 	
