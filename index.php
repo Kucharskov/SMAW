@@ -103,7 +103,7 @@ function get_page_title($url){
 
 <div class="row">
 	<div class="large-5 large-centered medium-7 medium-centered small-12 small-centered columns">
-		<?php if(!file_exists($SMAW_CONFIG["BaseFile"]) || !is_writable($SMAW_CONFIG["BaseFile"]) || !is_readable($SMAW_CONFIG["BaseFile"])) echo "<div class='fileproblem text-justify'>".ShowText("BaseProblem")."</div>"; ?>
+		<?php if(!file_exists($SMAW_CONFIG["BaseFile"]) || !is_writable($SMAW_CONFIG["BaseFile"]) || !is_readable($SMAW_CONFIG["BaseFile"])) echo "<div class='fileproblem text-justify'>".ShowText("BaseProblem")."</div>\n"; ?>
 		<ul class="pricing-table">
 			<li class="title"><?php echo $SMAW_CONFIG["SiteName"]; ?></li>
 			<?php
@@ -114,11 +114,11 @@ function get_page_title($url){
 					$SMAW_Url = $SMAW_Urls[$_GET["id"]-1];
 					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
 					if(!$SMAW_Url) {
-						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>";
+						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
-						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item dotted'>".get_page_title($SMAW_Url)."</li>";
-						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>";
+						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item dotted'>".get_page_title($SMAW_Url)."</li>\n";
+						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$SMAW_Url}");
 					}
 				} else {
@@ -138,14 +138,13 @@ function get_page_title($url){
 								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
 								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
 							}
-							$SMAW_OU = "<li class='price success'>".ShowText("ShortenURL")."<a href='{$SMAW_Url}'>{$SMAW_Url}</a></li>";
+							echo "<li class='price success'>".ShowText("ShortenURL")."<a href='{$SMAW_Url}'>{$SMAW_Url}</a></li>\n";
 						} else {
-							$SMAW_OU = "<li class='price alert'>".ShowText("BadURL")."</li>";
+							echo "<li class='price alert'>".ShowText("BadURL")."</li>\n";
 						}
 					} else {
-						$SMAW_OU = "<li class='price'>".ShowText("SMAWinfo")."</li>";
+						echo "<li class='price'>".ShowText("SMAWinfo")."</li>\n";
 					}
-					echo $SMAW_OU;
 			?>
 				<form action="index.php" method="post">
 					<li class="bullet-item">
@@ -158,14 +157,14 @@ function get_page_title($url){
 							</div>
 						</div>
 					</li>
-					<li class="cta-button"><button type="subimt" class="small"><?php echo ShowText("SMAWthat"); ?></button></a></li>
+					<li class="cta-button"><button type="subimt" class="small"><?php echo ShowText("SMAWthat"); ?></button></li>
 				</form>
 			<?php
 				}
 			?>
 		</ul>
 		<div class="clearfix">
-			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." {$SMAW_IDs}</span>"; ?>
+			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." {$SMAW_IDs}</span>\n"; ?>
 			<a class="right" href="http://kucharskov.pl">M. Kucharskov</a>
 		</div>
 	</div>
