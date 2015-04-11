@@ -173,18 +173,15 @@ function get_page_title($url){
 		<ul class="pricing-table lastshorts">
 			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
 			<?php				
-				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_LastUrls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
-				else { 
-					$SMAW_LastUrls = $SMAW_Urls;
-					$SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
-				}
+				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_Urls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
+				else $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
 				for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
 					if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
-						if($SMAW_LastUrls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
-						else echo "<li class='bullet-item dotted'><a href='{$SMAW_LastUrls[$SMAW_Count]}'>{$SMAW_LastUrls[$SMAW_Count]}</a></li>\n";
+						if($SMAW_Urls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
+						else echo "<li class='bullet-item dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					} else {
-						if($SMAW_LastUrls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
-						else echo "<li class='bullet-item'><a href='{$SMAW_LastUrls[$SMAW_Count]}'>{$SMAW_LastUrls[$SMAW_Count]}</a></li>\n";
+						if($SMAW_Urls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
+						else echo "<li class='bullet-item'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					}
 				}
 			?>
