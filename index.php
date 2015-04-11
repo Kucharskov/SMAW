@@ -75,11 +75,11 @@ function get_page_title($url){
 	<!--
 	a {	color: #333; }
 	a:hover { color: #000; }
-	.fileproblem { margin: 0.9375rem 0 0; padding: 0.9375rem 1.25rem; background-color: #f04124; border-color: #cf2a0e; color: #fff; }
+	.fileproblem { margin: 0.9375rem 0 0; padding: 0.9375rem 1.25rem; text-align: justify; background-color: #f04124; border-color: #cf2a0e; color: #fff; }
 	.pricing-table { margin-top: 3rem; margin-bottom: 0; }
 	.pricing-table .price { font-size: 1rem; }
 	.pricing-table .bullet-item { border-bottom: none; }
-	.pricing-table .bullet-item.dotted { border-bottom: 1px dotted #ddd; }
+	.pricing-table .bullet-item.dotted { text-align: justify; border-bottom: 1px dotted #ddd; }
 	.pricing-table .bullet-item .prefix { line-height: 2.3125rem !important; }
 	.pricing-table .bullet-item input { margin: 0; }
 	.pricing-table .cta-button { padding: 0; }
