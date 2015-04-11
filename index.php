@@ -95,6 +95,7 @@ function get_page_title($url){
 	.pricing-table .alert { background-color: #f04124; border-color: #cf2a0e; color: #fff; }
 	.pricing-table button { margin-bottom: 0.9375rem; color: #fff; }
 	.pricing-table.lastshorts { margin-top: 1rem; }
+	.overflowfix { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 	-->
 	</style>
 	
@@ -178,10 +179,10 @@ function get_page_title($url){
 				for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
 					if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
 						if($SMAW_Urls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
-						else echo "<li class='bullet-item dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+						else echo "<li class='bullet-item overflowfix dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					} else {
 						if($SMAW_Urls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
-						else echo "<li class='bullet-item'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+						else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					}
 				}
 			?>
