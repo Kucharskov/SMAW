@@ -31,7 +31,7 @@ $SMAW_TRANS["en"] = array(
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
 	"DeletedURL"	=> "Choosen redirect does not exist lub was deleted",
-	"BaseProblem"	=> "File with base does not exist or have assigned wrong CHMOD (777) permissions."
+	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions."
 );
 //Polish by M. Kucharskov
 $SMAW_TRANS["pl"] = array(
@@ -42,7 +42,7 @@ $SMAW_TRANS["pl"] = array(
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
 	"DeletedURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte",
-	"BaseProblem"	=> "Plik z bazą nie istnieje lub ma nadane niepoprawne prawa CHMOD (777)."
+	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma nadych poprawnych praw CHMOD (777)."
 );
 
 //Function ShowText with multilang text security
