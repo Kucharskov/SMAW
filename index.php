@@ -2,7 +2,7 @@
 ob_start();
 /***************************************************************************
  *
- *	SMAW v1.1 beta (So Minimize thAt Width)
+ *	SMAW v2.0 (So Minimize thAt Width)
  *	with love by M. Kucharskov & P. Kowalczyk (http://kucharskov.pl)
  *
  *	This is free software and it's distributed under Creative Commons BY-NC-SA License.
@@ -16,12 +16,12 @@ ob_start();
 /*
  *	Configuration of SMAW
  */
-$SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";
-$SMAW_CONFIG["Language"]	= "en";
-$SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";
-$SMAW_CONFIG["ShowLast"]	= 0;
-$SMAW_CONFIG["LinksCount"]	= 0;
-$SMAW_CONFIG["RewriteMod"]	= 0;
+$SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";		//Name of your website
+$SMAW_CONFIG["Language"]	= "en";							//Name of your langcode (avalibe: en, pl)
+$SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";				//Name of your links filebase. Remember to lock it via htaccess
+$SMAW_CONFIG["ShowLast"]	= 0;							//Show last X shortened URLs (0 - Disabled, X - Enabled to show X last)
+$SMAW_CONFIG["LinksCount"]	= 0;							//Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["RewriteMod"]	= 0;							//Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
 
 //Translations of SMAW
 //English by P. Kowalczyk
