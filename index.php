@@ -111,11 +111,11 @@ function get_page_title($url){
 					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
 					if(!$SMAW_Url) {
 						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>";
-						header("Refresh: 2; url={$_SERVER['PHP_SELF']}");
+						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
 						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item dotted'>".get_page_title($SMAW_Url)."</li>";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>";
-						header("Refresh: 2; url={$SMAW_Url}");
+						header("Refresh: 3; url={$SMAW_Url}");
 					}
 				} else {
 					if(isset($_POST["url"])) {
