@@ -168,7 +168,7 @@ function get_page_title($url){
 			<?php } ?>
 		</ul>
 		<?php
-			if($SMAW_CONFIG["ShowLast"] > 0) {
+			if($SMAW_CONFIG["ShowLast"] > 0 && $_GET["id"] <= 0) {
 		?>
 		<ul class="pricing-table lastshorts">
 			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
