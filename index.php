@@ -75,7 +75,7 @@ function get_page_title($url){
 	<!--
 	a {	color: #333; }
 	a:hover { color: #000; }
-	.fileproblem { margin: 0.9375rem 0 0; padding: 0.9375rem 1.25rem; text-align: justify; background-color: #f04124; border-color: #cf2a0e; color: #fff; }
+	.fileproblem { margin: 0.9375rem 0 0; padding: 0.9375rem 1.25rem; background-color: #f04124; border-color: #cf2a0e; color: #fff; }
 	.pricing-table { margin-top: 3rem; margin-bottom: 0; }
 	.pricing-table .price { font-size: 1rem; }
 	.pricing-table .bullet-item { border-bottom: none; }
@@ -100,7 +100,7 @@ function get_page_title($url){
 
 <div class="row">
 	<div class="large-5 large-centered medium-7 medium-centered small-12 small-centered columns">
-		<?php if(!file_exists($SMAW_CONFIG["BaseFile"]) || !is_writable($SMAW_CONFIG["BaseFile"]) || !is_readable($SMAW_CONFIG["BaseFile"])) echo "<div class='fileproblem'>".ShowText("BaseProblem")."</div>"; ?>
+		<?php if(!file_exists($SMAW_CONFIG["BaseFile"]) || !is_writable($SMAW_CONFIG["BaseFile"]) || !is_readable($SMAW_CONFIG["BaseFile"])) echo "<div class='fileproblem text-justify'>".ShowText("BaseProblem")."</div>"; ?>
 		<ul class="pricing-table">
 			<li class="title"><?php echo $SMAW_CONFIG["SiteName"]; ?></li>
 			<?php
