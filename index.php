@@ -49,7 +49,6 @@ $SMAW_TRANS["pl"] = array(
 function ShowText($string) {
 	global $SMAW_CONFIG;
 	global $SMAW_TRANS;
-
 	if(!$SMAW_TRANS[$SMAW_CONFIG["Language"]][$string]) return $SMAW_TRANS["en"][$string];
 	else return $SMAW_TRANS[$SMAW_CONFIG["Language"]][$string];
 }
@@ -57,11 +56,8 @@ function ShowText($string) {
 // Function to getting page title
 function get_page_title($url){
 	if(!($data = file_get_contents($url))) return false;
-	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) {
-		return trim($title[1]);
-	} else {
-		return false;
-	}
+	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) return trim($title[1]);
+	else return false;
 }
 ?>
 <!DOCTYPE html>
