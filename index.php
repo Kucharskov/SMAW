@@ -19,6 +19,7 @@ ob_start();
 $SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";
 $SMAW_CONFIG["Language"]	= "en";
 $SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";
+$SMAW_CONFIG["ShowLast"]	= 0;
 $SMAW_CONFIG["LinksCount"]	= 0;
 $SMAW_CONFIG["RewriteMod"]	= 0;
 
@@ -161,6 +162,29 @@ function get_page_title($url){
 				</form>
 			<?php
 				}
+			?>
+		</ul>
+		<?php
+			if($SMAW_CONFIG["ShowLast"] > 0) {
+		?>
+		<ul class="pricing-table">
+			<li class="title">Ostatnio skrócone</li>
+			<?php				
+				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_LastUrls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
+				else { 
+					$SMAW_LastUrls = $SMAW_Urls;
+					$SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
+				}
+				for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
+					if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
+						if($SMAW_LastUrls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
+						else echo "<li class='bullet-item dotted'><a href='{$SMAW_LastUrls[$SMAW_Count]}'>{$SMAW_LastUrls[$SMAW_Count]}</a></li>\n";
+					} else {
+						if($SMAW_LastUrls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
+						else echo "<li class='bullet-item'><a href='{$SMAW_LastUrls[$SMAW_Count]}'>{$SMAW_LastUrls[$SMAW_Count]}</a></li>\n";
+					}
+				}
+			}
 			?>
 		</ul>
 		<div class="clearfix">
