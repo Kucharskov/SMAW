@@ -27,10 +27,10 @@ $SMAW_CONFIG["RewriteMod"]	= 0;
 //English by P. Kowalczyk
 $SMAW_TRANS["en"] = array(
 	"SMAWinfo"		=> "Paste link, which you want make shorter.",
-	"SMAWthat"		=> "Make shorter",
+	"SMAWthat"		=> "Make shorter!",
 	"SMAWurl"		=> "Link:",
 	"CountURLs"		=> "Links:",
-	"LastURLs"		=> "Last shortened",
+	"LastURLs"		=> "Last shortened links",
 	"BadURL"		=> "Entered link is incorect!",
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
@@ -41,10 +41,10 @@ $SMAW_TRANS["en"] = array(
 //Polish by M. Kucharskov
 $SMAW_TRANS["pl"] = array(
 	"SMAWinfo"		=> "Wklej link, który chcesz skrócić.",
-	"SMAWthat"		=> "Skróć link",
+	"SMAWthat"		=> "Skróć link!",
 	"SMAWurl"		=> "Adres:",
 	"CountURLs"		=> "Adresów:",
-	"LastURLs"		=> "Ostatnio skrócone",
+	"LastURLs"		=> "Ostatnio skrócone adresy",
 	"BadURL"		=> "Wprowadzony link jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
