@@ -19,6 +19,7 @@ ob_start();
 $SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";
 $SMAW_CONFIG["Language"]	= "en";
 $SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";
+$SMAW_CONFIG["LinksCount"]	= 0;
 $SMAW_CONFIG["RewriteMod"]	= 0;
 
 //Translations of SMAW
@@ -27,6 +28,7 @@ $SMAW_TRANS["en"] = array(
 	"SMAWinfo"		=> "Paste link, which you want make shorter.",
 	"SMAWthat"		=> "Make shorter",
 	"SMAWurl"		=> "Link:",
+	"CountURLs"		=> "Links:",
 	"BadURL"		=> "Entered link is incorect!",
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
@@ -38,6 +40,7 @@ $SMAW_TRANS["pl"] = array(
 	"SMAWinfo"		=> "Wklej link, który chcesz skrócić.",
 	"SMAWthat"		=> "Skróć link",
 	"SMAWurl"		=> "Adres:",
+	"CountURLs"		=> "Adresów:",
 	"BadURL"		=> "Wprowadzony link jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
@@ -105,8 +108,9 @@ function get_page_title($url){
 			<li class="title"><?php echo $SMAW_CONFIG["SiteName"]; ?></li>
 			<?php
 				(int) $_GET["id"];
+				$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
+				$SMAW_IDs = count($SMAW_Urls);
 				if($_GET["id"] > 0) {
-					$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
 					$SMAW_Url = $SMAW_Urls[$_GET["id"]-1];
 					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
 					if(!$SMAW_Url) {
@@ -120,14 +124,13 @@ function get_page_title($url){
 				} else {
 					if(isset($_POST["url"])) {
 						if(filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
-							$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
 							foreach($SMAW_Urls as $SMAW_Row) {
 								$SMAW_RowID++;
 								if($SMAW_Row === "{$_POST["url"]}\r\n") $SMAW_ID = $SMAW_RowID;
 							}
 							if(!isset($SMAW_ID)) {
 								file_put_contents($SMAW_CONFIG["BaseFile"], "{$_POST["url"]}\r\n", FILE_APPEND);
-								$SMAW_ID = count($SMAW_Urls)+1;
+								$SMAW_ID = $SMAW_IDs+1;
 							}
 							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
@@ -161,7 +164,10 @@ function get_page_title($url){
 				}
 			?>
 		</ul>
-		<p class="text-right"><a href="http://kucharskov.pl">M. Kucharskov</a></p>
+		<div class="clearfix">
+			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." {$SMAW_IDs}</span>"; ?>
+			<a class="right" href="http://kucharskov.pl">M. Kucharskov</a>
+		</div>
 	</div>
 </div>
 	
