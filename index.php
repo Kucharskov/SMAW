@@ -83,6 +83,7 @@ function get_page_title($url){
 	.pricing-table { margin-top: 3rem; margin-bottom: 0; }
 	.pricing-table .price { font-size: 1rem; }
 	.pricing-table .bullet-item { border-bottom: none; }
+	.pricing-table .bullet-item.dotted { border-bottom: 1px dotted #ddd; }
 	.pricing-table .bullet-item .prefix { line-height: 2.3125rem !important; }
 	.pricing-table .bullet-item input { margin: 0; }
 	.pricing-table .cta-button { padding: 0; }
@@ -116,7 +117,7 @@ function get_page_title($url){
 						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>";
 						header("Refresh: 2; url={$_SERVER['PHP_SELF']}");
 					} else {
-						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>";
+						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item dotted'>".get_page_title($SMAW_Url)."</li>";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>";
 						header("Refresh: 2; url={$SMAW_Url}");
 					}
@@ -124,8 +125,7 @@ function get_page_title($url){
 					if(isset($_POST["url"])) {
 						if(filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 							$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
-							foreach($SMAW_Urls as $SMAW_Row)
-							{
+							foreach($SMAW_Urls as $SMAW_Row) {
 								$SMAW_RowID++;
 								if($SMAW_Row === "{$_POST["url"]}\r\n") $SMAW_ID = $SMAW_RowID;
 							}
