@@ -24,9 +24,9 @@ Lista zmian
   - Pół wbudowany HTML w kod echo PHP
   - Troche zminimalizowano kod
   - Włączono output buffering
+  
 ######Wersja 1.0
   - Początkowa wersja
-
 ---
 
 [EN] So Minimize thAt Width [SMAW](http://r.kucharskov.pl)
@@ -55,5 +55,6 @@ Changelog
   - Semi HTML build-in PHP echo code
   - Some minimized code
   - Turned output buffering on
+
 ######Version 1.0
   - Initial version
