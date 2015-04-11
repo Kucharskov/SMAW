@@ -30,10 +30,12 @@ $SMAW_TRANS["en"] = array(
 	"SMAWthat"		=> "Make shorter",
 	"SMAWurl"		=> "Link:",
 	"CountURLs"		=> "Links:",
+	"LastURLs"		=> "Last shortened",
 	"BadURL"		=> "Entered link is incorect!",
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
-	"DeletedURL"	=> "Choosen redirect does not exist lub was deleted",
+	"DeletedURL"	=> "Choosen redirect was deleted.",
+	"NotExistURL"	=> "Choosen redirect does not exist or was deleted.",
 	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions."
 );
 //Polish by M. Kucharskov
@@ -42,10 +44,12 @@ $SMAW_TRANS["pl"] = array(
 	"SMAWthat"		=> "Skróć link",
 	"SMAWurl"		=> "Adres:",
 	"CountURLs"		=> "Adresów:",
+	"LastURLs"		=> "Ostatnio skrócone",
 	"BadURL"		=> "Wprowadzony link jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
-	"DeletedURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte",
+	"DeletedURL"	=> "Wybrane przekierowanie zostało usunięte.",
+	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte.",
 	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma nadych poprawnych praw CHMOD (777)."
 );
 
@@ -115,7 +119,7 @@ function get_page_title($url){
 					$SMAW_Url = $SMAW_Urls[$_GET["id"]-1];
 					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
 					if(!$SMAW_Url) {
-						echo "<li class='bullet-item alert'>".ShowText("DeletedURL")."</li>\n";
+						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
 						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item dotted'>".get_page_title($SMAW_Url)."</li>\n";
@@ -160,15 +164,13 @@ function get_page_title($url){
 					</li>
 					<li class="cta-button"><button type="subimt" class="small"><?php echo ShowText("SMAWthat"); ?></button></li>
 				</form>
-			<?php
-				}
-			?>
+			<?php } ?>
 		</ul>
 		<?php
 			if($SMAW_CONFIG["ShowLast"] > 0) {
 		?>
 		<ul class="pricing-table">
-			<li class="title">Ostatnio skrócone</li>
+			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
 			<?php				
 				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_LastUrls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
 				else { 
@@ -184,9 +186,9 @@ function get_page_title($url){
 						else echo "<li class='bullet-item'><a href='{$SMAW_LastUrls[$SMAW_Count]}'>{$SMAW_LastUrls[$SMAW_Count]}</a></li>\n";
 					}
 				}
-			}
 			?>
 		</ul>
+		<?php }	?>
 		<div class="clearfix">
 			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." {$SMAW_IDs}</span>\n"; ?>
 			<a class="right" href="http://kucharskov.pl">M. Kucharskov</a>
