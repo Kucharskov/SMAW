@@ -2,7 +2,7 @@
 ob_start();
 /***************************************************************************
  *
- *	SMAW v2.0 (So Minimize thAt Width)
+ *	SMAW v2.1 beta (So Minimize thAt Width)
  *	with love by M. Kucharskov & P. Kowalczyk (http://kucharskov.pl)
  *
  *	This is free software and it's distributed under Creative Commons BY-NC-SA License.
@@ -178,11 +178,12 @@ function get_page_title($url){
 				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_Urls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
 				else $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
 				for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
+					$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
 					if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
-						if($SMAW_Urls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
+						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
 						else echo "<li class='bullet-item overflowfix dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					} else {
-						if($SMAW_Urls[$SMAW_Count] === "\r\n") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
+						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
 						else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					}
 				}
