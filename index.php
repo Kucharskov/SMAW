@@ -31,6 +31,7 @@ $SMAW_TRANS["en"] = array(
 	"SMAWurl"		=> "Link:",
 	"CountURLs"		=> "Links:",
 	"LastURLs"		=> "Last shortened links",
+	"NoLastURLs"	=> "No recent shortened links!",
 	"BadURL"		=> "Entered link is incorect!",
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
@@ -45,6 +46,7 @@ $SMAW_TRANS["pl"] = array(
 	"SMAWurl"		=> "Adres:",
 	"CountURLs"		=> "Adresów:",
 	"LastURLs"		=> "Ostatnio skrócone adresy",
+	"NoLastURLs"	=> "Brak ostatnio skróconych adresów!",
 	"BadURL"		=> "Wprowadzony link jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
@@ -174,17 +176,20 @@ function get_page_title($url){
 		?>
 		<ul class="pricing-table lastshorts">
 			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
-			<?php				
-				if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_Urls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
-				else $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
-				for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
-					$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
-					if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
-						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
-						else echo "<li class='bullet-item overflowfix dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
-					} else {
-						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
-						else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+			<?php
+				if($SMAW_IDs === 0) echo "<li class='price alert'>".ShowText("NoLastURLs")."</li>\n";
+				else {
+					if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_Urls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
+					else $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
+					for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
+						$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
+						if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
+							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
+							else echo "<li class='bullet-item overflowfix dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+						} else {
+							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
+							else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+						}
 					}
 				}
 			?>
