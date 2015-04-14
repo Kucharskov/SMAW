@@ -41,13 +41,13 @@ $SMAW_TRANS["en"] = array(
 );
 //Polish by M. Kucharskov
 $SMAW_TRANS["pl"] = array(
-	"SMAWinfo"		=> "Wklej link, który chcesz skrócić.",
-	"SMAWthat"		=> "Skróć link!",
+	"SMAWinfo"		=> "Wklej adres, który chcesz skrócić.",
+	"SMAWthat"		=> "Skróć adres!",
 	"SMAWurl"		=> "Adres:",
 	"CountURLs"		=> "Adresów:",
 	"LastURLs"		=> "Ostatnio skrócone adresy",
 	"NoLastURLs"	=> "Brak ostatnio skróconych adresów!",
-	"BadURL"		=> "Wprowadzony link jest niepoprawny!",
+	"BadURL"		=> "Wprowadzony adres jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
 	"DeletedURL"	=> "Wybrane przekierowanie zostało usunięte.",
