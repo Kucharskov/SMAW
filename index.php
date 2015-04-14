@@ -35,7 +35,7 @@ $SMAW_TRANS["en"] = array(
 	"BadURL"		=> "Entered link is incorect!",
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
-	"DeletedURL"	=> "Choosen redirect was deleted.",
+	"DeletedURL"	=> "Redirect removed from database.",
 	"NotExistURL"	=> "Choosen redirect does not exist or was deleted.",
 	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions."
 );
@@ -50,7 +50,7 @@ $SMAW_TRANS["pl"] = array(
 	"BadURL"		=> "Wprowadzony adres jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
-	"DeletedURL"	=> "Wybrane przekierowanie zostało usunięte.",
+	"DeletedURL"	=> "Przekierowanie usunięte z bazy.",
 	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte.",
 	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma nadych poprawnych praw CHMOD (777)."
 );
