@@ -184,10 +184,10 @@ function get_page_title($url){
 					for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
 						$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
 						if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
-							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item dotted'>".ShowText("DeletedURL")."</li>\n";
+							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item dotted'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 							else echo "<li class='bullet-item overflowfix dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 						} else {
-							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'>".ShowText("DeletedURL")."</li>\n";
+							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 							else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 						}
 					}
