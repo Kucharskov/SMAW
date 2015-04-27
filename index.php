@@ -26,7 +26,7 @@ $SMAW_CONFIG["RewriteMod"]	= 0;							//Use mod_rewrite links "domain.com/X" ins
 //Translations of SMAW
 //English by P. Kowalczyk
 $SMAW_TRANS["en"] = array(
-	"SMAWinfo"		=> "Paste link, which you want make shorter.",
+	"SMAWinfo"		=> "Paste link, which you want make shorter",
 	"SMAWthat"		=> "Make shorter!",
 	"SMAWurl"		=> "Link:",
 	"CountURLs"		=> "Links:",
@@ -35,13 +35,13 @@ $SMAW_TRANS["en"] = array(
 	"BadURL"		=> "Entered link is incorect!",
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
-	"DeletedURL"	=> "Redirect removed from database.",
-	"NotExistURL"	=> "Choosen redirect does not exist or was deleted.",
-	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions."
+	"DeletedURL"	=> "Redirect removed from database",
+	"NotExistURL"	=> "Choosen redirect does not exist or was deleted",
+	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions"
 );
 //Polish by M. Kucharskov
 $SMAW_TRANS["pl"] = array(
-	"SMAWinfo"		=> "Wklej adres, który chcesz skrócić.",
+	"SMAWinfo"		=> "Wklej adres, który chcesz skrócić",
 	"SMAWthat"		=> "Skróć adres!",
 	"SMAWurl"		=> "Adres:",
 	"CountURLs"		=> "Adresów:",
@@ -50,9 +50,9 @@ $SMAW_TRANS["pl"] = array(
 	"BadURL"		=> "Wprowadzony adres jest niepoprawny!",
 	"ShortenURL"	=> "Skrócony adres: ",
 	"LoadingURL"	=> "Przekierowywanie...",
-	"DeletedURL"	=> "Przekierowanie usunięte z bazy.",
-	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte.",
-	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma nadych poprawnych praw CHMOD (777)."
+	"DeletedURL"	=> "Przekierowanie usunięte z bazy",
+	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte",
+	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma nadych poprawnych praw CHMOD (777)"
 );
 
 //Function ShowText with multilang text security
