@@ -88,16 +88,16 @@ function get_page_title($url){
 	.fileproblem { margin: 0.9375rem 0 0; padding: 0.9375rem 1.25rem; background-color: #f04124; border-color: #cf2a0e; color: #fff; }
 	.pricing-table { margin-top: 3rem; margin-bottom: 0; }
 	.pricing-table .price { font-size: 1rem; }
-	.pricing-table .bullet-item { border-bottom: none; }
-	.pricing-table .bullet-item.dotted { border-bottom: 1px dotted #ddd; }
 	.pricing-table .bullet-item .prefix { line-height: 2.3125rem !important; }
 	.pricing-table .bullet-item input { margin: 0; }
+	.pricing-table .bullet-item:last-child { border-bottom: none !important; }
 	.pricing-table .cta-button { padding: 0; }
 	.pricing-table .success { background-color: #43ac6a; border-color: #368a55; color: #fff; }
 	.pricing-table .alert { background-color: #f04124; border-color: #cf2a0e; color: #fff; }
 	.pricing-table button { margin-bottom: 0.9375rem; color: #fff; }
 	.pricing-table.lastshorts { margin-top: 1rem; }
 	.overflowfix { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.noborder { border-bottom: none !important; }
 	.clearfix { margin-bottom: 3rem; }
 	-->
 	</style>
@@ -127,7 +127,7 @@ function get_page_title($url){
 						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
-						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item dotted'>".get_page_title($SMAW_Url)."</li>\n";
+						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$SMAW_Url}");
 					}
@@ -157,7 +157,7 @@ function get_page_title($url){
 					}
 			?>
 				<form action="index.php" method="post">
-					<li class="bullet-item">
+					<li class="bullet-item noborder">
 						<div class="row collapse">
 							<div class="small-3 columns">
 								<span class="prefix"><?php echo ShowText("SMAWurl"); ?></span>
@@ -183,13 +183,8 @@ function get_page_title($url){
 					else $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
 					for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
 						$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
-						if($SMAW_Count != $SMAW_CONFIG["ShowLast"]-1) {
-							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item dotted'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
-							else echo "<li class='bullet-item overflowfix dotted'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
-						} else {
-							if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
-							else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
-						}
+						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
+						else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
 					}
 				}
 			?>
