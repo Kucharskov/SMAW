@@ -141,6 +141,8 @@ function get_page_title($url){
 							if(!isset($SMAW_ID)) {
 								file_put_contents($SMAW_CONFIG["BaseFile"], "{$_POST["url"]}\r\n", FILE_APPEND);
 								$SMAW_ID = $SMAW_IDs+1;
+								$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
+								$SMAW_IDs = count($SMAW_Urls);
 							}
 							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
