@@ -20,6 +20,7 @@ $SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";		//Name of your website
 $SMAW_CONFIG["Language"]	= "en";							//Name of your langcode (avalibe: en, pl)
 $SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";				//Name of your links filebase. Remember to lock it via htaccess
 $SMAW_CONFIG["ShowLast"]	= 0;							//Show last X shortened URLs (0 - Disabled, X - Enabled to show X last)
+$SMAW_CONFIG["ShowLTitle"]	= 0;							//Show title of last shortened URLs (0 - Disabled, 1 - Enabled but slower)
 $SMAW_CONFIG["LinksCount"]	= 0;							//Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["RewriteMod"]	= 0;							//Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
 
@@ -186,7 +187,10 @@ function get_page_title($url){
 					for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
 						$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
 						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
-						else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+						else {
+							if($SMAW_CONFIG["ShowLTitle"] === 1) echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>".get_page_title($SMAW_Urls[$SMAW_Count])."</a></li>\n";
+							else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+						}
 					}
 				}
 			?>
