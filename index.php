@@ -182,14 +182,21 @@ function get_page_title($url){
 			<?php
 				if($SMAW_IDs === 0) echo "<li class='price alert'>".ShowText("NoLastURLs")."</li>\n";
 				else {
-					if($SMAW_IDs >= $SMAW_CONFIG["ShowLast"]) $SMAW_Urls = array_slice($SMAW_Urls, $SMAW_IDs-$SMAW_CONFIG["ShowLast"]);
-					else $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
-					for($SMAW_Count = 0; $SMAW_Count <= $SMAW_CONFIG["ShowLast"]-1; $SMAW_Count++) {
-						$SMAW_Urls[$SMAW_Count] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_Count]);
+					if($SMAW_IDs < $SMAW_CONFIG["ShowLast"]) $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
+					for($SMAW_Count = $SMAW_CONFIG["ShowLast"]; $SMAW_Count >= 1; $SMAW_Count--) {
+						$SMAW_FileID = $SMAW_IDs-$SMAW_Count;
+						$SMAW_ActualID = $SMAW_FileID+1;
+						$SMAW_Urls[$SMAW_FileID] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_FileID]);
 						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 						else {
-							if($SMAW_CONFIG["ShowLTitle"] === 1) echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>".get_page_title($SMAW_Urls[$SMAW_Count])."</a></li>\n";
-							else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Urls[$SMAW_Count]}'>{$SMAW_Urls[$SMAW_Count]}</a></li>\n";
+							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ActualID}";
+							if($SMAW_CONFIG["RewriteMod"] === 1) {
+								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
+								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
+								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
+							}
+							if($SMAW_CONFIG["ShowLTitle"] === 1) echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Url}'>".get_page_title($SMAW_Urls[$SMAW_FileID])."</a></li>\n";
+							else echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Url}'>{$SMAW_Urls[$SMAW_FileID]}</a></li>\n";
 						}
 					}
 				}
