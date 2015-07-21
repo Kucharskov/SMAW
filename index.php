@@ -148,7 +148,7 @@ function get_page_title($url){
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
 								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
 								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
-								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
+								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
 							}
 							echo "<li class='price success'>".ShowText("ShortenURL")."<a href='{$SMAW_Url}'>{$SMAW_Url}</a></li>\n";
 						} else {
