@@ -67,7 +67,7 @@ function ShowText($string) {
 function get_page_title($url){
 	if(!($data = file_get_contents($url))) return false;
 	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) return trim($title[1]);
-	else return $url;
+	else return false;
 }
 ?>
 <!DOCTYPE html>
@@ -127,7 +127,7 @@ function get_page_title($url){
 						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
-						echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>\n";
+						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$SMAW_Url}");
 					}
