@@ -36,7 +36,7 @@ $SMAW_TRANS["en"] = array(
 	"ShortenURL"	=> "Shortened link: ",
 	"LoadingURL"	=> "Redirecting...",
 	"DeletedURL"	=> "Redirect removed from database",
-	"NotExistURL"	=> "Choosen redirect does not exist or was deleted",
+	"NotExistURL"	=> "Chosen redirect does not exist or was deleted",
 	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions"
 );
 //Polish by M. Kucharskov
@@ -52,7 +52,7 @@ $SMAW_TRANS["pl"] = array(
 	"LoadingURL"	=> "Przekierowywanie...",
 	"DeletedURL"	=> "Przekierowanie usunięte z bazy",
 	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte",
-	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma nadych poprawnych praw CHMOD (777)"
+	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma danych poprawnych praw CHMOD (777)"
 );
 
 //Function ShowText with multilang text security
@@ -117,10 +117,11 @@ function get_page_title($url){
 		<ul class="pricing-table">
 			<li class="title"><?php echo $SMAW_CONFIG["SiteName"]; ?></li>
 			<?php
-				(int) $_GET["id"];
+				(string) $_GET["id"];
 				$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
 				$SMAW_IDs = count($SMAW_Urls);
-				if($_GET["id"] > 0) {
+				if(strlen($_GET["id"]) > 0) {
+					if($SMAW_CONFIG["HashLinks"] === 1) $_GET["id"] = base64_decode($_GET["id"]);
 					$SMAW_Url = $SMAW_Urls[$_GET["id"]-1];
 					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
 					if(!$SMAW_Url) {
@@ -144,6 +145,7 @@ function get_page_title($url){
 								$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
 								$SMAW_IDs = count($SMAW_Urls);
 							}
+							if($SMAW_CONFIG["HashLinks"] === 1) $SMAW_ID = str_replace("=", "", base64_encode($SMAW_ID));
 							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
 								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
@@ -185,6 +187,7 @@ function get_page_title($url){
 					for($SMAW_Count = $SMAW_CONFIG["ShowLast"]; $SMAW_Count >= 1; $SMAW_Count--) {
 						$SMAW_FileID = $SMAW_IDs-$SMAW_Count;
 						$SMAW_ActualID = $SMAW_FileID+1;
+						if($SMAW_CONFIG["HashLinks"] === 1) $SMAW_ActualID = str_replace("=", "", base64_encode($SMAW_ActualID));
 						$SMAW_Urls[$SMAW_FileID] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_FileID]);
 						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 						else {
