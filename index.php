@@ -190,7 +190,7 @@ function get_page_title($url){
 						$SMAW_ActualID = $SMAW_FileID+1;
 						if($SMAW_CONFIG["HashLinks"] === 1) $SMAW_ActualID = str_replace("=", "", base64_encode($SMAW_ActualID));
 						$SMAW_Urls[$SMAW_FileID] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_FileID]);
-						if($SMAW_Urls[$SMAW_Count] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
+						if($SMAW_Urls[$SMAW_FileID] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 						else {
 							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ActualID}";
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
