@@ -23,6 +23,7 @@ $SMAW_CONFIG["ShowLast"]	= 0;							//Show last X shortened URLs (0 - Disabled, 
 $SMAW_CONFIG["LinksCount"]	= 0;							//Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["RewriteMod"]	= 0;							//Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["HashLinks"]	= 0;							//Use base64 function to hash link ID (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["FixSlash"]	= 0;							//Fixed doubled slash // for some apache/nginx servers (0 - Disabled, 1 - Enabled)
 
 //Translations of SMAW
 //English by P. Kowalczyk
@@ -151,7 +152,8 @@ function get_page_title($url){
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
 								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
 								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
-								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
+								if($SMAW_CONFIG["FixSlash"] === 1) $SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
+								else $SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
 							}
 							echo "<li class='price success'>".ShowText("ShortenURL")."<a href='{$SMAW_Url}'>{$SMAW_Url}</a></li>\n";
 						} else {
@@ -196,7 +198,8 @@ function get_page_title($url){
 							if($SMAW_CONFIG["RewriteMod"] === 1) {
 								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
 								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
-								$SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
+								if($SMAW_CONFIG["FixSlash"] === 1) $SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
+								else $SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
 							}
 							echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Url}'>{$SMAW_Urls[$SMAW_FileID]}</a></li>\n";
 						}
