@@ -158,7 +158,7 @@ function GetPageTitle($url){
 	if(@$dom->loadHTML(mb_convert_encoding($data, "HTML-ENTITIES", "UTF-8"))) {
 		$list = $dom->getElementsByTagName("title");
 		if ($list->length > 0) {
-			return mb_convert_encoding($list->item(0)->textContent, 'HTML-ENTITIES', 'UTF-8');
+			return $list->item(0)->textContent;
 		}
 	}
 	
