@@ -25,7 +25,8 @@ $SMAW_CONFIG["RewriteMod"]	= 1;							//Use mod_rewrite links "domain.com/X" ins
 $SMAW_CONFIG["HashLinks"]	= 0;							//Use base64 function to hash link ID (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["FixSlash"]	= 0;							//Fixed doubled slash // for some apache/nginx servers (0 - Disabled, 1 - Enabled)
 
-//Translations of SMAW
+// Translations of SMAW
+// English by M. Kucharskov
 $SMAW_TRANS["en"] = array(
 	"SMAWinfo"		=> "Paste link, which you want make shorter",
 	"SMAWthat"		=> "Make shorter!",
@@ -40,7 +41,7 @@ $SMAW_TRANS["en"] = array(
 	"NotExistURL"	=> "Chosen redirect does not exist or was deleted",
 	"BaseProblem"	=> "File with base does not exist or don't have assigned properly CHMOD (777) permissions"
 );
-//Polish by M. Kucharskov
+// Polish by M. Kucharskov
 $SMAW_TRANS["pl"] = array(
 	"SMAWinfo"		=> "Wklej adres, który chcesz skrócić",
 	"SMAWthat"		=> "Skróć adres!",
@@ -56,22 +57,23 @@ $SMAW_TRANS["pl"] = array(
 	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma danych poprawnych praw CHMOD (777)"
 );
 
-//Function ShowText with multilang text security
+// Function to display text with multilang text security
 function ShowText($string) {
 	global $SMAW_CONFIG;
 	global $SMAW_TRANS;
+	
 	if(!$SMAW_TRANS[$SMAW_CONFIG["Language"]][$string]) return $SMAW_TRANS["en"][$string];
 	else return $SMAW_TRANS[$SMAW_CONFIG["Language"]][$string];
 }
 
-// Function to getting page title
+// Function for getting page title
 function GetPageTitle($url){
 	if(!($data = file_get_contents($url))) return false;
 	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) return trim($title[1]);
 	else return false;
 }
 
-//Function for getting URL for specific ID
+// Function for getting URL for specific ID
 function GetURL($id) {
 	global $SMAW_CONFIG;
 
