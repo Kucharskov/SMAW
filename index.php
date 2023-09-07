@@ -2,8 +2,8 @@
 ob_start();
 /***************************************************************************
  *
- *	SMAW v2.1 beta (So Minimize thAt Width)
- *	with love by M. Kucharskov & P. Kowalczyk (http://kucharskov.pl)
+ *	SMAW v3.0 beta (So Minimize thAt Width)
+ *	with love by M. Kucharskov (http://kucharskov.pl)
  *
  *	This is free software and it's distributed under Creative Commons BY-NC-SA License.
  *
@@ -17,8 +17,8 @@ ob_start();
  *	Configuration of SMAW
  */
 $SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";		//Name of your website
-$SMAW_CONFIG["Language"]	= "en";							//Name of your langcode (avalibe: en, pl)
-$SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";				//Name of your links filebase. Remember to lock it via htaccess
+$SMAW_CONFIG["Language"]	= "en";							//Name of your language code (available: en, pl)
+$SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";				//Name of your links file database. Remember to lock it via htaccess!
 $SMAW_CONFIG["ShowLast"]	= 0;							//Show last X shortened URLs (0 - Disabled, X - Enabled to show X last)
 $SMAW_CONFIG["LinksCount"]	= 0;							//Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["RewriteMod"]	= 0;							//Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
@@ -26,7 +26,6 @@ $SMAW_CONFIG["HashLinks"]	= 0;							//Use base64 function to hash link ID (0 - 
 $SMAW_CONFIG["FixSlash"]	= 0;							//Fixed doubled slash // for some apache/nginx servers (0 - Disabled, 1 - Enabled)
 
 //Translations of SMAW
-//English by P. Kowalczyk
 $SMAW_TRANS["en"] = array(
 	"SMAWinfo"		=> "Paste link, which you want make shorter",
 	"SMAWthat"		=> "Make shorter!",
@@ -66,7 +65,7 @@ function ShowText($string) {
 }
 
 // Function to getting page title
-function get_page_title($url){
+function GetPageTitle($url){
 	if(!($data = file_get_contents($url))) return false;
 	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) return trim($title[1]);
 	else return false;
@@ -130,7 +129,7 @@ function get_page_title($url){
 						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
-						if(get_page_title($SMAW_Url)) echo "<li class='bullet-item'>".get_page_title($SMAW_Url)."</li>\n";
+						if(GetPageTitle($SMAW_Url)) echo "<li class='bullet-item'>".GetPageTitle($SMAW_Url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$SMAW_Url}");
 					}
