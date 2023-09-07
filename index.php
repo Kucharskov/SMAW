@@ -79,7 +79,7 @@ function GetURL($id) {
 	$urls = file($SMAW_CONFIG["BaseFile"]);
 	if($id > count($urls)) return false;
 
-	$url = $urls[$id - 1];	// Offset for first link
+	$url = $urls[$id - 1]; // Offset for first link
 	$url = trim($url);
 
 	return $url;
@@ -92,7 +92,7 @@ function GetLastURLs($amount) {
 	$last = [];
 	$urls = file($SMAW_CONFIG["BaseFile"]);
 	$indexShift = count($urls) - $SMAW_CONFIG["ShowLast"] + 1; // Offset for first link
-	foreach(array_slice($urls, -$amount) as $index=>$value){
+	foreach(array_slice($urls, -$amount) as $index => $value){
 	   $last[$index + $indexShift] = $value;
 	}
 	
@@ -106,12 +106,12 @@ function SaveURL($url) {
 	if(!filter_var($url, FILTER_VALIDATE_URL)) return false;
 	
 	$urls = file($SMAW_CONFIG["BaseFile"]);
-	foreach($urls as $index=>$value) {
-		if(trim($value) === $url) return $index + 1;
+	foreach($urls as $index => $value) {
+		if(trim($value) === $url) return $index + 1; // Offset for first link
 	}
 	
 	file_put_contents($SMAW_CONFIG["BaseFile"], "{$url}\r\n", FILE_APPEND);
-	return count($urls) + 1;
+	return count($urls) + 1; // Offset for first link
 }
 ?>
 <!DOCTYPE html>
@@ -213,7 +213,7 @@ function SaveURL($url) {
 				$last = GetLastURLs($SMAW_CONFIG["ShowLast"]);
 				
 				if(count($last) === 0) echo "<li class='price alert'>".ShowText("NoLastURLs")."</li>\n";
-				foreach($last as $index=>$value) {
+				foreach($last as $index => $value) {
 					if($value === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 					else {
 						$temp_URL = $index; // REFACTOR - Generating full URL for ID
