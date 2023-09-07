@@ -55,6 +55,21 @@ $SMAW_TRANS["pl"] = array(
 	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte",
 	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie posiada poprawnych uprawnień CHMOD (777)"
 );
+// German by r0BIT (https://twitter.com/0xr0BIT)
+$SMAW_TRANS["de"] = array(
+    "SMAWinfo"		=> "Link zum Kürzen einfügen",
+    "SMAWthat"		=> "Kürzen!",
+    "SMAWurl"		=> "Link:",
+    "CountURLs"		=> "Links:",
+    "LastURLs"		=> "Kürzlich gekürzte Links",
+    "NoLastURLs"	=> "Keine kürzlich gekürzten Links!",
+    "BadURL"		=> "Der eingegebene Link ist nicht korrekt!",
+    "ShortenURL"	=> "Gekürzter Link: ",
+    "LoadingURL"	=> "Weiterleiten...",
+    "DeletedURL"	=> "Weiterleitung aus Datenbank entfernt",
+    "NotExistURL"	=> "Die gewünschte Weiterleitung existiert nicht oder wurde gelöscht",
+    "BaseProblem"	=> "Die Datei existiert nicht oder hat nicht die erforderlichen Berechtigungen (CHMOD 777)"
+);
 
 // Whole class for generating proper hashes for specific IDs
 // Source: https://github.com/dmhendricks/hash-int/
