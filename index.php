@@ -286,7 +286,7 @@ function GenerateURL($id) {
 					if(!$status) {
 						echo "<li class='price alert'>".ShowText("BadURL")."</li>\n";
 					} else {
-						echo "<li class='price success'>".ShowText("ShortenURL")."<a href='".GenerateURL($status)."'>{$temp_URL}</a></li>\n";
+						echo "<li class='price success'>".ShowText("ShortenURL")."<a href='".GenerateURL($status)."'>".GenerateURL($status)."</a></li>\n";
 					}
 				} 
 				
