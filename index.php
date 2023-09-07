@@ -13,17 +13,15 @@ ob_start();
  *
  ***************************************************************************/
 
-/*
- *	Configuration of SMAW
- */
-$SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";		//Name of your website
-$SMAW_CONFIG["Language"]	= "pl";							//Name of your language code (available: en, pl)
-$SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";				//Name of your links file database. Remember to lock it via htaccess!
-$SMAW_CONFIG["ShowLast"]	= 5;							//Show last X shortened URLs (0 - Disabled, X - Enabled to show X last)
-$SMAW_CONFIG["LinksCount"]	= 1;							//Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
-$SMAW_CONFIG["RewriteMod"]	= 1;							//Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
-$SMAW_CONFIG["HashLinks"]	= 0;							//Use base64 function to hash link ID (0 - Disabled, 1 - Enabled)
-$SMAW_CONFIG["FixSlash"]	= 0;							//Fixed doubled slash // for some apache/nginx servers (0 - Disabled, 1 - Enabled)
+// Configuration of SMAW
+$SMAW_CONFIG["SiteName"]	= "Page powered by SMAW";		// Name of your website
+$SMAW_CONFIG["Language"]	= "pl";							// Name of your language code (available: en, pl)
+$SMAW_CONFIG["BaseFile"]	= "SMAWurls.txt";				// Name of your links file database. Remember to lock it via htaccess!
+$SMAW_CONFIG["ShowLast"]	= 5;							// Show last X shortened URLs (0 - Disabled, X - Enabled to show X last)
+$SMAW_CONFIG["LinksCount"]	= 1;							// Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["RewriteMod"]	= 1;							// Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["HashLinks"]	= 0;							// Use base64 function to hash link ID (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["FixSlash"]	= 0;							// Fixed doubled slash // for some apache/nginx servers (0 - Disabled, 1 - Enabled)
 
 // Translations of SMAW
 // English by M. Kucharskov
