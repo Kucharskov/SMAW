@@ -70,6 +70,21 @@ $SMAW_TRANS["de"] = array(
     "NotExistURL"	=> "Die gewünschte Weiterleitung existiert nicht oder wurde gelöscht",
     "BaseProblem"	=> "Die Datei existiert nicht oder hat nicht die erforderlichen Berechtigungen (CHMOD 777)"
 );
+// Italian by P0 (https://twitter.com/Pzz02)
+$SMAW_TRANS["it"] = array(
+    "SMAWinfo"		=> "Incolla il link che vuoi accorciare",
+    "SMAWthat"		=> "Accorcia!",
+    "SMAWurl"		=> "Link:",
+    "CountURLs"		=> "Links:",
+    "LastURLs"		=> "Ultimi links accorciati",
+    "NoLastURLs"	=> "Non ci sono links accorciati recenti",
+    "BadURL"		=> "Link incorretto!",
+    "ShortenURL"	=> "Link accorciato: ",
+    "LoadingURL"	=> "Reindirizzando...",
+    "DeletedURL"	=> "Reindirizzamento rimosso dal database",
+    "NotExistURL"	=> "Reindirizzamento selezionato non esiste o cancellato",
+    "BaseProblem"	=> "Database file non esiste o non ha i permessi corretti (CHMOD 777)"
+);
 
 // Whole class for generating proper hashes for specific IDs
 // Source: https://github.com/dmhendricks/hash-int/
