@@ -249,8 +249,8 @@ function CountURLs() {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="generator" content="SMAW (http://kucharskov.pl)">
 
-	<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/foundation.min.css" rel="stylesheet">
-	<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/normalize.min.css" rel="stylesheet">
+	<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css" rel="stylesheet">
+	<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css" rel="stylesheet">
 	<style type="text/css">
 	<!--
 	a {	color: #333; }
@@ -271,13 +271,6 @@ function CountURLs() {
 	.clearfix { margin-bottom: 3rem; }
 	-->
 	</style>
-	
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation.min.js"></script>
-	<!--[if lt IE 9]>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->	
 </head>
 <body>
 
@@ -353,7 +346,9 @@ function CountURLs() {
 		</div>
 	</div>
 </div>
-	
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
 <script type="text/javascript">
 $(document).foundation();
 </script>
