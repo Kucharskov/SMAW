@@ -208,7 +208,7 @@ function GenerateURL($id) {
 	$basename = pathinfo(__FILE__, PATHINFO_BASENAME);
 	
 	$url = "http";
-	$url .= empty($_SERVER['HTTPS']) ? "":"s";	
+	$url .= empty($_SERVER["HTTPS"]) ? "":"s";	
 	$url .= "://{$_SERVER["HTTP_HOST"]}";
 	$url .= str_replace($basename, "", $_SERVER["REQUEST_URI"]);
 	if($SMAW_CONFIG["FixSlash"]) $url .= "/";
@@ -272,7 +272,7 @@ function GenerateURL($id) {
 					
 					if(!$url) {
 						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
-						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
+						header("Refresh: 3; url={$_SERVER["PHP_SELF"]}");
 					} else {
 						if(GetPageTitle($url)) echo "<li class='bullet-item'>".GetPageTitle($url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
