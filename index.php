@@ -142,7 +142,7 @@ function GetURL($id) {
 					} else {
 						if(GetPageTitle($url)) echo "<li class='bullet-item'>".GetPageTitle($url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
-						header("Refresh: 3; url={$SMAW_Url}");
+						header("Refresh: 3; url={$url}");
 					}
 				} else {
 					if(isset($_POST["url"])) {
