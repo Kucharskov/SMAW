@@ -21,6 +21,7 @@ $SMAW_CONFIG["ShowLast"]	= 5;							// Show last X shortened URLs (0 - Disabled,
 $SMAW_CONFIG["LinksCount"]	= 1;							// Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["RewriteMod"]	= 1;							// Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["HashLinks"]	= 1;							// Use base64 function to hash link ID (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["HashSize"]	= 5;							// Set size for hashed URLs. Small values might occurs with overlaping! (Default: 5)
 $SMAW_CONFIG["FixSlash"]	= 0;							// Add slash in URL for fixes in some apache/nginx servers (0 - Disabled, 1 - Enabled)
 
 // Translations of SMAW
@@ -213,7 +214,7 @@ function GenerateURL($id) {
 	$url .= str_replace($basename, "", $_SERVER["REQUEST_URI"]);
 	if($SMAW_CONFIG["FixSlash"]) $url .= "/";
 	if(!$SMAW_CONFIG["RewriteMod"]) $url .= "{$basename}?id=";
-	if($SMAW_CONFIG["HashLinks"]) $url .= HashInt::hash($id, 7);
+	if($SMAW_CONFIG["HashLinks"]) $url .= HashInt::hash($id, $SMAW_CONFIG["HashSize"]);
 	else $url .= $id;
 	
 	return $url;
