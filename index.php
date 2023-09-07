@@ -218,6 +218,13 @@ function GenerateURL($id) {
 	
 	return $url;
 }
+
+// Function returning amount of all links (I count deleted also)
+function CountURLs() {
+	global $SMAW_CONFIG;
+	
+	return count(file($SMAW_CONFIG["BaseFile"]));
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $SMAW_CONFIG["Language"]; ?>">
@@ -326,7 +333,7 @@ function GenerateURL($id) {
 		</ul>
 		<?php }	?>
 		<div class="clearfix">
-			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." {$SMAW_IDs}</span>\n"; ?>
+			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." ".CountURLs()."</span>\n"; ?>
 			<a class="right" href="http://kucharskov.pl">M. Kucharskov</a>
 		</div>
 	</div>
