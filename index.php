@@ -21,7 +21,7 @@ $SMAW_CONFIG["ShowLast"]	= 5;							// Show last X shortened URLs (0 - Disabled,
 $SMAW_CONFIG["LinksCount"]	= 1;							// Show link counter with all shortened links (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["RewriteMod"]	= 1;							// Use mod_rewrite links "domain.com/X" instead of "domain.com/index.php?id=X" (0 - Disabled, 1 - Enabled)
 $SMAW_CONFIG["HashLinks"]	= 1;							// Use base64 function to hash link ID (0 - Disabled, 1 - Enabled)
-$SMAW_CONFIG["FixSlash"]	= 0;							// Fixed doubled slash // for some apache/nginx servers (0 - Disabled, 1 - Enabled)
+$SMAW_CONFIG["FixSlash"]	= 0;							// Add slash in URL for fixes in some apache/nginx servers (0 - Disabled, 1 - Enabled)
 
 // Translations of SMAW
 // English by M. Kucharskov
@@ -52,7 +52,7 @@ $SMAW_TRANS["pl"] = array(
 	"LoadingURL"	=> "Przekierowywanie...",
 	"DeletedURL"	=> "Przekierowanie usunięte z bazy",
 	"NotExistURL"	=> "Wybrane przekierowanie nie istnieje lub zostało usunięte",
-	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie ma danych poprawnych praw CHMOD (777)"
+	"BaseProblem"	=> "Plik z bazą nie istnieje lub nie posiada poprawnych uprawnień CHMOD (777)"
 );
 
 // Whole class for generating proper hashes for specific IDs
