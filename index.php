@@ -198,7 +198,7 @@ function SaveURL($url) {
 		if(trim($value) === $url) return $index + 1; // Offset for first link
 	}
 	
-	file_put_contents($SMAW_CONFIG["BaseFile"], "{$url}\r\n", FILE_APPEND);
+	file_put_contents($SMAW_CONFIG["BaseFile"], "{$url}".PHP_EOL, FILE_APPEND);
 	return count($urls) + 1; // Offset for first link
 }
 
@@ -318,6 +318,7 @@ function GenerateURL($id) {
 				
 				if(count($last) === 0) echo "<li class='price alert'>".ShowText("NoLastURLs")."</li>\n";
 				foreach($last as $index => $value) {
+					$value = trim($value);
 					if($value === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
 					else echo "<li class='bullet-item overflowfix'><a href='".GenerateURL($index)."'>{$value}</a></li>\n";
 				}
