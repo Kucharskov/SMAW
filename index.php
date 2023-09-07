@@ -155,6 +155,9 @@ function ShowText($string) {
 function GetPageTitle($url){
 	$dom = new DOMDocument();
 	$data = file_get_contents($url);
+	
+	if(strlen($data)) return false;
+	
 	if(@$dom->loadHTML(mb_convert_encoding($data, "HTML-ENTITIES", "UTF-8"))) {
 		$list = $dom->getElementsByTagName("title");
 		if ($list->length > 0) {
