@@ -153,9 +153,15 @@ function ShowText($string) {
 
 // Function for getting page title
 function GetPageTitle($url){
-	if(!($data = file_get_contents($url))) return false;
-	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) return trim($title[1]);
-	else return false;
+	$dom = new DOMDocument();
+	if($dom->loadHTMLFile($url)) {
+		$list = $dom->getElementsByTagName("title");
+		if ($list->length > 0) {
+			return $list->item(0)->textContent;
+		}
+	}
+	
+	return false;
 }
 
 // Function for getting URL for specific ID
