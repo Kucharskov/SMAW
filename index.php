@@ -85,6 +85,20 @@ function GetURL($id) {
 	return $url;
 }
 
+// Function for getting array of last n URLs
+function GetLastURLs($amount) {
+	global $SMAW_CONFIG;
+
+	$last = [];
+	$urls = file($SMAW_CONFIG["BaseFile"]);
+	$indexShift = count($urls) - $SMAW_CONFIG["ShowLast"] + 1; // Offset for first link
+	foreach(array_slice($urls, -$amount) as $index=>$value){
+	   $last[$index + $indexShift] = $value;
+	}
+	
+	return $last;
+}
+
 // Function for saving URL in DB with checking if exact URL was saved earlier
 function SaveURL($url) {
 	global $SMAW_CONFIG;
@@ -191,30 +205,19 @@ function SaveURL($url) {
 			<?php } ?>
 		</ul>
 		<?php
-			if($SMAW_CONFIG["ShowLast"] > 0 && $_GET["id"] <= 0) {
+			if($SMAW_CONFIG["ShowLast"] > 0 && !isset($_GET["id"])) {
 		?>
 		<ul class="pricing-table lastshorts">
 			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
 			<?php
-				if($SMAW_IDs === 0) echo "<li class='price alert'>".ShowText("NoLastURLs")."</li>\n";
-				else {
-					if($SMAW_IDs < $SMAW_CONFIG["ShowLast"]) $SMAW_CONFIG["ShowLast"] = $SMAW_IDs;
-					for($SMAW_Count = $SMAW_CONFIG["ShowLast"]; $SMAW_Count >= 1; $SMAW_Count--) {
-						$SMAW_FileID = $SMAW_IDs-$SMAW_Count;
-						$SMAW_ActualID = $SMAW_FileID+1;
-						if($SMAW_CONFIG["HashLinks"] === 1) $SMAW_ActualID = str_replace("=", "", base64_encode($SMAW_ActualID));
-						$SMAW_Urls[$SMAW_FileID] = str_replace("\r\n", "", $SMAW_Urls[$SMAW_FileID]);
-						if($SMAW_Urls[$SMAW_FileID] === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
-						else {
-							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ActualID}";
-							if($SMAW_CONFIG["RewriteMod"] === 1) {
-								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
-								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
-								if($SMAW_CONFIG["FixSlash"] === 1) $SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
-								else $SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
-							}
-							echo "<li class='bullet-item overflowfix'><a href='{$SMAW_Url}'>{$SMAW_Urls[$SMAW_FileID]}</a></li>\n";
-						}
+				$last = GetLastURLs($SMAW_CONFIG["ShowLast"]);
+				
+				if(count($last) === 0) echo "<li class='price alert'>".ShowText("NoLastURLs")."</li>\n";
+				foreach($last as $index=>$value) {
+					if($value === "") echo "<li class='bullet-item'><span class='alert label'>".ShowText("DeletedURL")."</span></li>\n";
+					else {
+						$temp_URL = $index; // REFACTOR - Generating full URL for ID
+						echo "<li class='bullet-item overflowfix'><a href='{$temp_URL}'>{$value}</a></li>\n";
 					}
 				}
 			?>
