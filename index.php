@@ -70,6 +70,20 @@ function GetPageTitle($url){
 	if(preg_match("@<title>(.+)<\/title>@", $data, $title)) return trim($title[1]);
 	else return false;
 }
+
+//Function for getting URL for specific ID
+function GetURL($id) {
+	global $SMAW_CONFIG;
+
+	if($id < 0) return false;
+	$urls = file($SMAW_CONFIG["BaseFile"]);
+	if($id > count($urls)) return false;
+
+	$url = $urls[$id - 1];	// Offset for first link
+	$url = trim($url);
+
+	return $url;
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $SMAW_CONFIG["Language"]; ?>">
@@ -118,18 +132,15 @@ function GetPageTitle($url){
 		<ul class="pricing-table">
 			<li class="title"><?php echo $SMAW_CONFIG["SiteName"]; ?></li>
 			<?php
-				(string) $_GET["id"];
-				$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
-				$SMAW_IDs = count($SMAW_Urls);
-				if(strlen($_GET["id"]) > 0) {
-					if($SMAW_CONFIG["HashLinks"] === 1) $_GET["id"] = base64_decode($_GET["id"]);
-					$SMAW_Url = $SMAW_Urls[$_GET["id"]-1];
-					$SMAW_Url = str_replace("\r\n", "", $SMAW_Url);
-					if(!$SMAW_Url) {
+				if(isset($_GET["id"])) {
+					$id = (string) $_GET["id"];
+					$url = GetURL($id);
+					
+					if(!$url) {
 						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER['PHP_SELF']}");
 					} else {
-						if(GetPageTitle($SMAW_Url)) echo "<li class='bullet-item'>".GetPageTitle($SMAW_Url)."</li>\n";
+						if(GetPageTitle($url)) echo "<li class='bullet-item'>".GetPageTitle($url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$SMAW_Url}");
 					}
