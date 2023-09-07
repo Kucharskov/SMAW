@@ -154,10 +154,11 @@ function ShowText($string) {
 // Function for getting page title
 function GetPageTitle($url){
 	$dom = new DOMDocument();
-	if(@$dom->loadHTMLFile($url)) {
+	$data = file_get_contents($url);
+	if(@$dom->loadHTML(mb_convert_encoding($data, "HTML-ENTITIES", "UTF-8"))) {
 		$list = $dom->getElementsByTagName("title");
 		if ($list->length > 0) {
-			return $list->item(0)->textContent;
+			return mb_convert_encoding($list->item(0)->textContent, 'HTML-ENTITIES', 'UTF-8');
 		}
 	}
 	
