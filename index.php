@@ -84,6 +84,21 @@ function GetURL($id) {
 
 	return $url;
 }
+
+// Function for saving URL in DB with checking if exact URL was saved earlier
+function SaveURL($url) {
+	global $SMAW_CONFIG;
+
+	if(!filter_var($url, FILTER_VALIDATE_URL)) return false;
+	
+	$urls = file($SMAW_CONFIG["BaseFile"]);
+	foreach($urls as $index=>$value) {
+		if(trim($value) === $url) return $index + 1;
+	}
+	
+	file_put_contents($SMAW_CONFIG["BaseFile"], "{$url}\r\n", FILE_APPEND);
+	return count($urls) + 1;
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $SMAW_CONFIG["Language"]; ?>">
@@ -144,34 +159,21 @@ function GetURL($id) {
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$url}");
 					}
-				} else {
-					if(isset($_POST["url"])) {
-						if(filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
-							foreach($SMAW_Urls as $SMAW_Row) {
-								$SMAW_RowID++;
-								if($SMAW_Row === "{$_POST["url"]}\r\n") $SMAW_ID = $SMAW_RowID;
-							}
-							if(!isset($SMAW_ID)) {
-								file_put_contents($SMAW_CONFIG["BaseFile"], "{$_POST["url"]}\r\n", FILE_APPEND);
-								$SMAW_ID = $SMAW_IDs+1;
-								$SMAW_Urls = file($SMAW_CONFIG["BaseFile"]);
-								$SMAW_IDs = count($SMAW_Urls);
-							}
-							if($SMAW_CONFIG["HashLinks"] === 1) $SMAW_ID = str_replace("=", "", base64_encode($SMAW_ID));
-							$SMAW_Url = "http://{$_SERVER["HTTP_HOST"]}{$_SERVER["PHP_SELF"]}?id={$SMAW_ID}";
-							if($SMAW_CONFIG["RewriteMod"] === 1) {
-								$SMAW_FName	= explode("/", $_SERVER["PHP_SELF"]);
-								$SMAW_FName = $SMAW_FName[(count($SMAW_FName)-1)];
-								if($SMAW_CONFIG["FixSlash"] === 1) $SMAW_Url = str_replace("{$SMAW_FName}?id=", "", $SMAW_Url);
-								else $SMAW_Url = str_replace("{$SMAW_FName}?id=", "/", $SMAW_Url);
-							}
-							echo "<li class='price success'>".ShowText("ShortenURL")."<a href='{$SMAW_Url}'>{$SMAW_Url}</a></li>\n";
-						} else {
-							echo "<li class='price alert'>".ShowText("BadURL")."</li>\n";
-						}
+				}
+				
+				if(isset($_POST["url"])) {
+					$status = SaveURL($_POST["url"]);
+					
+					if(!$status) {
+						echo "<li class='price alert'>".ShowText("BadURL")."</li>\n";
 					} else {
-						echo "<li class='price'>".ShowText("SMAWinfo")."</li>\n";
+						$temp_URL = $status; // REFACTOR - Generating full URL for ID
+						echo "<li class='price success'>".ShowText("ShortenURL")."<a href='{$temp_URL}'>{$temp_URL}</a></li>\n";
 					}
+				} 
+				
+				if(!isset($_GET["id"])) {
+					echo "<li class='price'>".ShowText("SMAWinfo")."</li>\n";
 			?>
 				<form action="index.php" method="post">
 					<li class="bullet-item noborder">
