@@ -280,7 +280,8 @@ function CountURLs() {
 		<ul class="pricing-table">
 			<li class="title"><?php echo $SMAW_CONFIG["SiteName"]; ?></li>
 			<?php
-				if(isset($_GET["id"])) {
+			
+				if(!empty($_GET["id"])) {
 					$id = (string) $_GET["id"];
 					$url = GetURL($id);
 					
@@ -304,7 +305,7 @@ function CountURLs() {
 					}
 				} 
 				
-				if(!isset($_GET["id"])) {
+				if(empty($_GET["id"])) {
 					echo "<li class='price'>".ShowText("SMAWinfo")."</li>\n";
 			?>
 				<form action="index.php" method="post">
@@ -323,7 +324,7 @@ function CountURLs() {
 			<?php } ?>
 		</ul>
 		<?php
-			if($SMAW_CONFIG["ShowLast"] > 0 && !isset($_GET["id"])) {
+			if($SMAW_CONFIG["ShowLast"] > 0 && empty($_GET["id"])) {
 		?>
 		<ul class="pricing-table lastshorts">
 			<li class="title"><?php echo ShowText("LastURLs"); ?></li>
