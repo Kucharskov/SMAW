@@ -1,47 +1,38 @@
-﻿[PL] So Minimize thAt Width [SMAW](http://r.kucharskov.pl)
-======
-Skrypt napisany w języku PHP skracający linki. Główne funkcje i zalety:
-  - Przyjemna konfiguracja na początku pliku
-  - Mozliwość włączenia/wyłączenia generowania ładnych URLi
-  - Możliwość przestawienia języka (polski / angielski) wspierająca możliwosć dodania własnych tłumaczeń
-  - Korzysta z frameworka [Zurb Foundation](http://foundation.zurb.com/)
-  - Wszystko w JEDNYM pliku
-
-Lista zmian
-----
-######Wersja 2.0
-  - Poprawki i aktualizacje tłumaczeń
-  - Poprawki CSS (z klasami framework'a)
-  - Poprawiony niezmienny kod języka "en" html
-  - Przepisany generator linków rewritemod
-  - Standardowo wyłączony rewritemod
-  - Usunięty dziwny i nieużyteczny regex do walidacji adresów
-  - Uproszczono wyświetlanie wiadomości
-  - Zmiana czasu przekierowania na 3 sekundy
-  - Dodana opcja do pokazywania ostatnich X skróconych adresów
-  - Dodano licznik adresów z opcją włączenia
-  - Dodano tytuł strony podczas przekierowywania
-  - Pół wbudowany HTML w kod echo PHP
-  - Troche zminimalizowano kod
-  - Włączono output buffering
-  
-######Wersja 1.0
-  - Początkowa wersja
-
----
-
-[EN] So Minimize thAt Width [SMAW](http://r.kucharskov.pl)
-======
-Script written in PHP which shortens links. Main features and benefits:
-  - A nice setup at the beginning of the file
-  - Option to enable / disable the generation of the pretty URLs
-  - Option to change language (polish / english),which supports adding your own translations
-  - It uses the [Zurb Foundation](http://foundation.zurb.com/) framework
+﻿# So Minimize thAt Width (SMAW) - [live demo](http://r.kucharskov.pl)
+A script written in PHP as a link shortener. Main functions and capabilities:
+  - Settings block at the very beginning of the script
+  - Option to generate "nice" URLs (like YouTube) with selectable ID lengths
+  - Built-in 4 languages (Polish, English, German, Italian) with the ability to easily add your own language
+  - It uses the [Zurb Foundation](http://foundation.zurb.com/) framework version 5
   - That's all in ONE file
 
-Changelog
-----
-######Version 2.0
+## Changelog
+I can't guarantee that I typed everything I did here, because I might not have remembered ;)
+
+###### Version 3.0 REFACTOR (beta)
+  - Refactored whole PHP code, but funcionality stays similar!
+  - CSS fixes (with framework classes)
+  - Translation updates and fixes
+  - New languages: German (by [r0BIT](https://twitter.com/0xr0BIT), Italian (by [P0](https://twitter.com/Pzz02))
+  - Now link ID's is no longer BASE64, now theres number-magic with [hash-int](https://github.com/dmhendricks/hash-int) library which makes URLs more YouTube-like
+  - Additional golden primes calculated in hash-int which allows user to crate 13 chars URL ID's (and thats a lot)
+  - Different way to get TITLE from source page
+  - Silenced warning of getting TITLE 
+  - New default configuration
+  - Bump JavaScript libraries versions
+  - Refactored README also ;)
+
+###### Version 2.1 (beta)
+  - Feature for fixing missing slash in URL
+  - Fature added to BASE64 link ID's
+  - Added "No recent shortened links" verification
+  - Fixed not updating links counter
+  - Fixes in output links
+  - Translation updates and fixes
+  - CSS fixes (with framework classes)
+  - Bump JavaScript libraries versions
+
+###### Version 2.0
   - Translation updates and fixes
   - CSS fixes (with framework classes)
   - Fixed always "en" html lang code
@@ -57,5 +48,8 @@ Changelog
   - Some minimized code
   - Turned output buffering on
 
-######Version 1.0
+###### Version 1.0
   - Initial version
+  
+## Important thing
+I wrote this code while i was in technical school. Every now and then I look at it and try to improve it - with varying success. I have tested this piece of code as much as I can, especially with the boundary conditions, and I feel that it works. Especially since the live demo hasn't caused damage since 2015. But maybe it's just luck. Use on your own risk.
