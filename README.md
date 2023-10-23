@@ -9,11 +9,16 @@ A script written in PHP as a link shortener. Main functions and capabilities:
 ## Changelog
 I can't guarantee that I typed everything I did here, because I might not have remembered ;)
 
+###### Version 3.1 (still beta)
+  - Fix XSS in title, found by [kozmer](https://github.com/kozmer)
+  - Fix XSS in last links, found by [ToBeatElite](https://github.com/tobeatelite)
+  - Update link in footer from my website to SMAW GitHub
+
 ###### Version 3.0 REFACTOR (beta)
   - Refactored whole PHP code, but funcionality stays similar!
   - CSS fixes (with framework classes)
   - Translation updates and fixes
-  - New languages: German (by [r0BIT](https://twitter.com/0xr0BIT), Italian (by [P0](https://twitter.com/Pzz02))
+  - New languages: German (by [r0BIT](https://twitter.com/0xr0BIT)), Italian (by [P0](https://twitter.com/Pzz02))
   - Now link ID's is no longer BASE64, now theres number-magic with [hash-int](https://github.com/dmhendricks/hash-int) library which makes URLs more YouTube-like
   - Additional golden primes calculated in hash-int which allows user to crate 13 chars URL ID's (and thats a lot)
   - Different way to get TITLE from source page
