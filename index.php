@@ -372,7 +372,7 @@ function CountURLs() {
 		<?php }	?>
 		<div class="clearfix">
 			<?php if($SMAW_CONFIG["LinksCount"] === 1) echo "<span class='left'>".ShowText("CountURLs")." ".CountURLs()."</span>\n"; ?>
-			<a class="right" href="http://kucharskov.pl">M. Kucharskov</a>
+			<a class="right" href="https://github.com/Kucharskov/SMAW">SMAW</a>
 		</div>
 	</div>
 </div>
