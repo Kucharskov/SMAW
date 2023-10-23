@@ -2,7 +2,7 @@
 ob_start();
 /***************************************************************************
  *
- *	SMAW v3.0 beta (So Minimize thAt Width)
+ *	SMAW v3.1 beta (So Minimize thAt Width)
  *	with love by M. Kucharskov (http://kucharskov.pl)
  *
  *	This is free software and it's distributed under Creative Commons BY-NC-SA License.
