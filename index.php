@@ -224,6 +224,7 @@ function GetLastURLs($amount) {
 	$last = [];
 	$urls = file($SMAW_CONFIG["BaseFile"]);
 	$indexShift = count($urls) - $SMAW_CONFIG["ShowLast"] + 1; // Offset for first link
+	if($indexShift < 0) $indexShift = 1; // Offset for first link, when we have less links than we wants
 	foreach(array_slice($urls, -$amount) as $index => $value){
 	   $last[$index + $indexShift] = htmlspecialchars($value);
 	}
