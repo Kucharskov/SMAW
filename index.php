@@ -249,13 +249,14 @@ function SaveURL($url) {
 // Function for generating URL with all tweaks
 function GenerateURL($id) {
 	global $SMAW_CONFIG;
+	$basename = pathinfo(__FILE__, PATHINFO_BASENAME);
 	
 	$url = "http";
 	$url .= empty($_SERVER["HTTPS"]) ? "":"s";	
 	$url .= "://{$_SERVER["HTTP_HOST"]}";
-	$url .= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+	$url .= str_replace($basename, "",  parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
 	if($SMAW_CONFIG["FixSlash"]) $url .= "/";
-	if(!$SMAW_CONFIG["RewriteMod"]) $url .= "?id=";
+	if(!$SMAW_CONFIG["RewriteMod"]) $url .= "{$basename}?id=";
 	if($SMAW_CONFIG["HashLinks"]) $url .= HashInt::hash($id, $SMAW_CONFIG["HashSize"]);
 	else $url .= $id;
 	
