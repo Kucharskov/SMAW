@@ -338,7 +338,7 @@ function CountURLs() {
 				if(empty($_GET["id"])) {
 					echo "<li class='price'>".ShowText("SMAWinfo")."</li>\n";
 			?>
-				<form action="index.php" method="post">
+				<form action="<?php echo pathinfo(__FILE__, PATHINFO_BASENAME); ?>" method="post">
 					<li class="bullet-item noborder">
 						<div class="row collapse">
 							<div class="small-3 columns">
