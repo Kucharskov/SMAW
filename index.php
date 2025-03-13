@@ -332,7 +332,7 @@ function CountURLs() {
 						echo "<li class='bullet-item alert'>".ShowText("NotExistURL")."</li>\n";
 						header("Refresh: 3; url={$_SERVER["PHP_SELF"]}");
 					} else {
-						if(GetPageTitle($url)) echo "<li class='bullet-item'>".GetPageTitle($url)."</li>\n";
+						if(!IsLocalAddress($url) && GetPageTitle($url)) echo "<li class='bullet-item'>".GetPageTitle($url)."</li>\n";
 						echo "<li class='bullet-item'>".ShowText("LoadingURL")."</li>\n";
 						header("Refresh: 3; url={$url}");
 					}
