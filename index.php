@@ -237,6 +237,7 @@ function SaveURL($url) {
 	global $SMAW_CONFIG;
 
 	if(!filter_var($url, FILTER_VALIDATE_URL)) return false;
+	if(IsLocalAddress($url)) return false;
 	
 	$urls = file($SMAW_CONFIG["BaseFile"]);
 	foreach($urls as $index => $value) {
@@ -245,6 +246,17 @@ function SaveURL($url) {
 	
 	file_put_contents($SMAW_CONFIG["BaseFile"], "{$url}".PHP_EOL, FILE_APPEND);
 	return count($urls) + 1; // Offset for first link
+}
+
+// Function to check if url contains an local IP as hostname
+function IsLocalAddress($url) {
+	$host = parse_url($url, PHP_URL_HOST);
+
+    if (filter_var($host, FILTER_VALIDATE_IP)) {
+        return filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false;
+    }
+
+    return $host === "localhost";
 }
 
 // Function for generating URL with all tweaks
