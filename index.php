@@ -186,6 +186,7 @@ function ShowText($string) {
 
 // Function for getting page title
 function GetPageTitle($url){
+	libxml_use_internal_errors(true);
 	$dom = new DOMDocument();
 	$data = @file_get_contents($url);
 	
@@ -197,6 +198,7 @@ function GetPageTitle($url){
 			return htmlspecialchars($list->item(0)->textContent);
 		}
 	}
+	libxml_clear_errors();
 	
 	return false;
 }
