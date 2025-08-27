@@ -9,10 +9,13 @@ A script written in PHP as a link shortener. Main functions and capabilities:
 ## Changelog
 I can't guarantee that I typed everything I did here, because I might not have remembered ;)
 
-###### Version 3.1 (still beta)
+###### Version 3.1 (still beta) - IN DEVELOPMENT
   - Fix XSS in title, found by [kozmer](https://github.com/kozmer)
   - Fix XSS in last links, found by [ToBeatElite](https://github.com/tobeatelite)
+  - Fix problems with DOM Parsing containing SVG
   - Update link in footer from my website to SMAW GitHub
+  - Removed hardcoded filename
+  - Preventing for localhost abuse  
 
 ###### Version 3.0 REFACTOR (beta)
   - Refactored whole PHP code, but funcionality stays similar!
